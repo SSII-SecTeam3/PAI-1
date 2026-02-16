@@ -6,44 +6,49 @@ PORT = 5000
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as client:
     client.connect((HOST, PORT))
 
-    msgRegOLog = client.recv(1024).decode() # Recibe el mensaje sobre si quiere loguearse o registrarse
+    msgRegOLog = client.recv(1024).decode()
     print(msgRegOLog)
     regOLog = input()
     client.send(regOLog.encode())
     while regOLog.upper() not in ["L", "R"]:
-        msgInvalidOption = client.recv(1024).decode() # Recibe mensaje de opción no válida
+        msgInvalidOption = client.recv(1024).decode()
         print(msgInvalidOption)
         regOLog = input()
         client.send(regOLog.encode())
 
-    mgsUserPass = client.recv(1024).decode() # Recibe el mensaje pidiendo usuario y contraseña
+    mgsUserPass = client.recv(1024).decode()
     print(mgsUserPass)
-    user = input("Usuario: ")
-    password = input("Password: ")
+    user = input(">> Usuario: ")
+    password = input(">> Password: ")
     client.send(f"{user}|{password}".encode())
 
-    msgUserRegisteredOrLogged = client.recv(1024).decode() # Recibe mensaje de usuario registrado o logueado
+    msgUserRegisteredOrLogged = client.recv(1024).decode()
     print(msgUserRegisteredOrLogged)
 
-    if "Login correcto" not in msgUserRegisteredOrLogged:
+    if "Login correcto" not in msgUserRegisteredOrLogged and "registrado correctamente" not in msgUserRegisteredOrLogged:
         print("Login fallido. Cerrando conexión.")
     else:
         newTransaction = "S"
         while newTransaction.upper() == "S":
-            msgTrans = client.recv(1024).decode() # Recibe mensaje pidiendo datos de la transacción
-            print(msgTrans)
 
-            origen = input("Cuenta origen: ")
-            destino = input("Cuenta destino: ")
-            cantidad = input("Cantidad: ")
-            mensaje = f"{origen}|{destino}|{cantidad}"
-            client.send(mensaje.encode())
+            try:
+                msgTrans = client.recv(1024).decode()
+                print(msgTrans)
 
-            msgResultTrans = client.recv(1024).decode()
-            print("Respuesta del servidor:", msgResultTrans)
+                origen = input(">> Cuenta origen: ")
+                destino = input(">> Cuenta destino: ")
+                cantidad = input(">> Cantidad: ")
+                mensaje = f"{origen}|{destino}|{cantidad}"
+                client.send(mensaje.encode())
 
-            msgNewTransaction = client.recv(1024).decode()
-            print(msgNewTransaction)
-            newTransaction = input()
-            client.send(newTransaction.encode())
+                msgResultTrans = client.recv(1024).decode()
+                print("Respuesta del servidor:", msgResultTrans)
 
+                msgNewTransaction = client.recv(1024).decode()
+                print(msgNewTransaction)
+                newTransaction = input()
+                client.send(newTransaction.encode())
+                
+            except KeyboardInterrupt:
+                print("\nSaliendo...")
+                break
