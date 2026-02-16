@@ -1,4 +1,5 @@
 import socket
+import seguridad
 
 HOST = '127.0.0.1'
 PORT = 5000
@@ -22,6 +23,9 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as client:
     password = input(">> Password: ")
     client.send(f"{user}|{password}".encode())
 
+    clave_sesion = seguridad.derivar_clave(password)
+    nonces_usados = set()
+
     msgUserRegisteredOrLogged = client.recv(1024).decode()
     print(msgUserRegisteredOrLogged)
 
@@ -38,11 +42,22 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as client:
                 origen = input(">> Cuenta origen: ")
                 destino = input(">> Cuenta destino: ")
                 cantidad = input(">> Cantidad: ")
-                mensaje = f"{origen}|{destino}|{cantidad}"
+
+                mensaje_plano = f"{origen}|{destino}|{cantidad}"
+                mensaje = seguridad.crear_mensaje_seguro(clave_sesion, mensaje_plano)
                 client.send(mensaje.encode())
 
-                msgResultTrans = client.recv(1024).decode()
-                print("Respuesta del servidor:", msgResultTrans)
+                msgResultTrans = client.recv(4096).decode()
+                
+                valido, msg, error = seguridad.verificar_integridad(
+                    clave_sesion, msgResultTrans, nonces_usados
+                )
+
+                if valido:
+                    print("Respuesta del servidor:", msg)
+                else:
+                    print(error)
+                    break
 
                 msgNewTransaction = client.recv(1024).decode()
                 print(msgNewTransaction)
