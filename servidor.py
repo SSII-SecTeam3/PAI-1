@@ -1,6 +1,7 @@
 import socket
 import time
 import psycopg2
+import seguridad
 from populatedb import get_connection
 from argon2 import PasswordHasher
 from argon2.exceptions import VerifyMismatchError
@@ -10,6 +11,7 @@ PORT = 5000
 
 ph = PasswordHasher()
 logged_users = {}
+security = {}
 
 def registerUser(socket, user, password):
     db = None
@@ -162,6 +164,8 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server:
                     
                 user, password = datos_login.split("|")
 
+                clave_temporal = seguridad.derivar_clave(password)
+
                 user_id = None
 
                 if(regOLog.upper() == "L"):
@@ -174,40 +178,57 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server:
                 else:
                     newTransaction = "S"
                     logged_users[conn] = user_id
+
+                    security[conn] = {
+                        "key": clave_temporal,
+                        "nonces": set()
+                    }
+
                     while newTransaction.upper() == "S":
 
                         time.sleep(0.2)
 
                         try:
                             conn.send("> Introduzca a continuación la cuenta origen, destino y cantidad de la transacción".encode())
-                            data = conn.recv(1024).decode()
-                            if not data:
+                            data_sec = conn.recv(4096).decode()
+                            if not data_sec:
                                 break
 
+                            contexto_sec = security[conn]
+                            valido, msg, error = seguridad.verificar_integridad(
+                                contexto_sec["key"], data_sec, contexto_sec["nonces"]
+                            )
+
                             respuesta = ""
-                            try:
-                                origen, destino, cantidad = data.split("|")
-                                cantidad = float(cantidad)
 
-                                if conn not in logged_users:
-                                    respuesta = "Debe iniciar sesión."
-                                elif str(logged_users[conn]) != str(origen):
-                                    respuesta = "No puede transferir desde otra cuenta."
-                                else:
-                                    resultado = realizar_transferencia(origen, destino, cantidad)
-                                    respuesta = resultado
-                                    print("\n--- DATOS RECIBIDOS ---")
-                                    print("Cuenta origen:", origen)
-                                    print("Cuenta destino:", destino)
-                                    print("Cantidad:", cantidad)
-                                    print("---------\n")
+                            if not valido:
+                                print("ERROR DE SEGURIDAD.", error)
+                                break
+                            else:
+                                try:
+                                    origen, destino, cantidad = msg.split("|")
+                                    cantidad = float(cantidad)
 
-                            except ValueError:
-                                respuesta = "ERROR EN FORMATO (Use: origen|destino|cantidad)"
-                            except Exception as e:
-                                respuesta = "ERROR EN PROCESAMIENTO"
-                                
-                            conn.send(respuesta.encode())
+                                    if conn not in logged_users:
+                                        respuesta = "Debe iniciar sesión."
+                                    elif str(logged_users[conn]) != str(origen):
+                                        respuesta = "No puede transferir desde otra cuenta."
+                                    else:
+                                        resultado = realizar_transferencia(origen, destino, cantidad)
+                                        respuesta = resultado
+                                        print("\n--- DATOS RECIBIDOS ---")
+                                        print("Cuenta origen:", origen)
+                                        print("Cuenta destino:", destino)
+                                        print("Cantidad:", cantidad)
+                                        print("---------\n")
+
+                                except ValueError:
+                                    respuesta = "ERROR EN FORMATO (Use: origen|destino|cantidad)"
+                                except Exception as e:
+                                    respuesta = "ERROR EN PROCESAMIENTO"
+
+                            respuesta_sec = seguridad.crear_mensaje_seguro(contexto_sec["key"], respuesta)
+                            conn.send(respuesta_sec.encode())
                             time.sleep(0.2)
                             conn.send("> ¿Desea realizar otra transacción? (S/N)".encode())
                             newTransaction = conn.recv(1024).decode()
@@ -218,6 +239,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server:
 
                 if conn in logged_users:
                     del logged_users[conn]
+                    del security[conn]
 
         except KeyboardInterrupt:
             print("\nApagando servidor...")
