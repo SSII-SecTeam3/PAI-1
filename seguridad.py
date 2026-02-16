@@ -57,7 +57,7 @@ def verificar_integridad(clave: bytes, mensaje_recibido: str, nonces_usados: set
         # VERIFICACIÓN HMAC
         hmac_calculado = calcular_hmac(clave, mensaje_real, nonce_recibido)
 
-        if hmac.compare_digest(hmac_calculado, hmac_recibido): # SE USA COMPARE_DIGEST PARA EVITAR LOS ATAQUES DE CANAL LATERAL
+        if hmac.compare_digest(hmac_calculado, hmac_recibido): # COMPARE_DIGEST PARA EVITAR LOS ATAQUES DE CANAL LATERAL
             return True, mensaje_real, ""
         else:
             return False, "", "ERROR DE SEGURIDAD. La firma no coincide."
