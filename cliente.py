@@ -25,22 +25,25 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as client:
     msgUserRegisteredOrLogged = client.recv(1024).decode() # Recibe mensaje de usuario registrado o logueado
     print(msgUserRegisteredOrLogged)
 
-    newTransaction = "S"
-    while newTransaction.upper() == "S":
-        msgTrans = client.recv(1024).decode() # Recibe mensaje pidiendo datos de la transacción
-        print(msgTrans)
+    if "Login correcto" not in msgUserRegisteredOrLogged:
+        print("Login fallido. Cerrando conexión.")
+    else:
+        newTransaction = "S"
+        while newTransaction.upper() == "S":
+            msgTrans = client.recv(1024).decode() # Recibe mensaje pidiendo datos de la transacción
+            print(msgTrans)
 
-        origen = input("Cuenta origen: ")
-        destino = input("Cuenta destino: ")
-        cantidad = input("Cantidad: ")
-        mensaje = f"{origen}|{destino}|{cantidad}"
-        client.send(mensaje.encode())
+            origen = input("Cuenta origen: ")
+            destino = input("Cuenta destino: ")
+            cantidad = input("Cantidad: ")
+            mensaje = f"{origen}|{destino}|{cantidad}"
+            client.send(mensaje.encode())
 
-        msgResultTrans = client.recv(1024).decode()
-        print("Respuesta del servidor:", msgResultTrans)
+            msgResultTrans = client.recv(1024).decode()
+            print("Respuesta del servidor:", msgResultTrans)
 
-        msgNewTransaction = client.recv(1024).decode()
-        print(msgNewTransaction)
-        newTransaction = input()
-        client.send(newTransaction.encode())
+            msgNewTransaction = client.recv(1024).decode()
+            print(msgNewTransaction)
+            newTransaction = input()
+            client.send(newTransaction.encode())
 
