@@ -3,13 +3,13 @@ import hashlib
 import secrets
 
 ALGORITMO_HASH = hashlib.sha512
-LONGITUD_CLAVE = 16 # 128 bits
+LONGITUD_CLAVE = 64 # 512 bits
 LONGITUD_NONCE = 16 # 128 bits
 SALT_GLOBAL = b'f4a1d8b9c2e3f0a5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9'
 
 def derivar_clave(password: str) -> bytes:
     """
-    Transforma la contraseña en una clave criptográfica de longitud adecuada (128 bits).
+    Transforma la contraseña en una clave criptográfica de longitud adecuada (512 bits).
     """
     return hashlib.pbkdf2_hmac(
         'sha512', 
