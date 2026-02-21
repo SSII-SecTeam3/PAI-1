@@ -98,6 +98,7 @@ CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     username TEXT UNIQUE NOT NULL,
     password_hash TEXT NOT NULL,
+    pub_rsa TEXT NOT NULL,
     balance NUMERIC(12,2) NOT NULL DEFAULT 0
 );
 ```

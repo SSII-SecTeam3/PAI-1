@@ -167,3 +167,215 @@
 2026-02-21 10:37:21,353 - [C->S] pruebaDef|1234
 2026-02-21 10:37:21,510 - [S->C] ERROR: usuario ya existe.
 2026-02-21 10:37:21,510 - [C] Login fallido. Cerrando conexión.
+2026-02-21 13:55:44,591 - [S] Conectado desde ('127.0.0.1', 49498)
+2026-02-21 13:55:44,593 - [S->C] > ¿Quiere loguearse o registrarse? (L/R)
+2026-02-21 13:55:46,840 - [C->S] l
+2026-02-21 13:55:46,840 - [S->C] > Introduzca a continuación su usuario y contraseña.
+2026-02-21 13:55:50,286 - [C] Usuario: prueba1
+2026-02-21 13:55:53,288 - [C] Password: 1234
+2026-02-21 13:55:53,290 - [S] ERROR general en el servidor: 
+2026-02-21 13:55:53,290 - [S->C] 
+2026-02-21 13:55:53,290 - [C] Login fallido. Cerrando conexión.
+2026-02-21 14:01:56,053 - [S] Servidor detenido por KeyboardInterrupt.
+2026-02-21 14:02:03,967 - [S] Conectado desde ('127.0.0.1', 40688)
+2026-02-21 14:02:03,969 - [S->C] > ¿Quiere loguearse o registrarse? (L/R)
+2026-02-21 14:02:05,820 - [C->S] L
+2026-02-21 14:02:05,820 - [S->C] > Introduzca a continuación su usuario y contraseña.
+2026-02-21 14:02:08,767 - [C] Usuario: prueba1
+2026-02-21 14:02:10,314 - [C] Password: 1234
+2026-02-21 14:02:10,315 - [C->S] prueba1|1234
+2026-02-21 14:02:10,472 - [S->C] Login correcto. Su Nª de cuenta es: 1
+2026-02-21 14:02:10,672 - [S->C] > Introduzca a continuación la cuenta origen, destino y cantidad de la transacción
+2026-02-21 14:02:14,055 - [C] Cuenta origen: 1
+2026-02-21 14:02:14,868 - [C] Cuenta destino: 2
+2026-02-21 14:02:16,623 - [C] Cantidad: 400
+2026-02-21 14:02:16,624 - [C->S] 1|2|400|e0cba7eb8a9fbbde4ceb434a50f668fb49e05b6531e96d4989fd8beb6f9a7ce8c4cbe41290309bcf3d0d493510c06b543701e00ce1fde9d6bd1cca42bcb00731|811be01088ed26e05c273df408208ea9
+2026-02-21 14:02:16,682 - [S] --- DATOS RECIBIDOS ---
+2026-02-21 14:02:16,683 - [S] Cuenta origen: 1
+2026-02-21 14:02:16,683 - [S] Cuenta destino: 2
+2026-02-21 14:02:16,683 - [S] Cantidad: 400.0
+2026-02-21 14:02:16,683 - [S] ---------
+2026-02-21 14:02:16,683 - [S->C] TRANSFERENCIA REALIZADA|67588648f8427d2aa05d6c88df6d150c983e9ee7e12960334a0d41af3d1dbf82660b2ce29eea639ceafbe8df39d4a8543343d069e1da6f5c917f7516070eda4d|878505a39445f18f6b0f8e03fb657cd1
+2026-02-21 14:02:16,684 - [C] Respuesta del servidor: TRANSFERENCIA REALIZADA
+2026-02-21 14:02:16,884 - [S->C] > ¿Desea realizar otra transacción? (S/N)
+2026-02-21 14:02:20,081 - [C->S] n
+2026-02-21 14:09:27,674 - [S] Servidor detenido por KeyboardInterrupt.
+2026-02-21 14:09:40,823 - [S] Conectado desde ('127.0.0.1', 53808)
+2026-02-21 14:09:40,826 - [S->C] > ¿Quiere loguearse o registrarse? (L/R)
+2026-02-21 14:09:42,126 - [C->S] l
+2026-02-21 14:09:42,127 - [S->C] > Introduzca a continuación su usuario y contraseña.
+2026-02-21 14:09:44,514 - [C] Usuario: prueba1
+2026-02-21 14:09:52,095 - [C] Password: 1234
+2026-02-21 14:09:52,097 - [C->S] prueba1|1234
+2026-02-21 14:09:52,217 - [S->C] Login correcto. Su Nª de cuenta es: 1
+2026-02-21 14:09:52,417 - [S->C] > Introduzca a continuación la cuenta origen, destino y cantidad de la transacción
+2026-02-21 14:09:53,885 - [C] Cuenta origen: 1
+2026-02-21 14:09:55,253 - [C] Cuenta destino: 3
+2026-02-21 14:09:57,160 - [C] Cantidad: 492
+2026-02-21 14:09:57,161 - [C->S] 1|3|492|863435f7b08909d67720fc72c957d69766375849ebac1c0cea0d4c5b05141e4f1838d034d41f03fff4bad09baf29fd56ce4bd65e3515803c62c4d15affb7abc4|6efd9c9cfd0d92a5a00805315c557991
+2026-02-21 14:09:57,204 - [S] --- DATOS RECIBIDOS ---
+2026-02-21 14:09:57,204 - [S] Cuenta origen: 1
+2026-02-21 14:09:57,204 - [S] Cuenta destino: 3
+2026-02-21 14:09:57,204 - [S] Cantidad: 492.0
+2026-02-21 14:09:57,204 - [S] ---------
+2026-02-21 14:09:57,205 - [S->C] TRANSFERENCIA REALIZADA|856a5d31efa3cbe0d60e131076c2d85e18b8b50c2f66d275092bb5429c9819f4beab73abf6c368c25a9b919ca61a3bfb5eaf1b526f0ea7844550d36e2ca54097|55b57fe94dc482f1bfced805d54322fb
+2026-02-21 14:09:57,205 - [C] Respuesta del servidor: TRANSFERENCIA REALIZADA
+2026-02-21 14:09:57,405 - [S->C] > ¿Desea realizar otra transacción? (S/N)
+2026-02-21 15:20:16,737 - [S] Servidor detenido por KeyboardInterrupt.
+2026-02-21 15:20:18,881 - [C] Saliendo por KeyboardInterrupt.
+2026-02-21 16:02:05,740 - [S] Conectado desde ('127.0.0.1', 54424)
+2026-02-21 16:02:05,740 - [S] ERROR general en el servidor: [Errno 2] No such file or directory: 'banco_privada.pem'
+2026-02-21 20:59:05,302 - [S] Servidor detenido por KeyboardInterrupt.
+2026-02-21 20:59:27,051 - [S] Conectado desde ('127.0.0.1', 41994)
+2026-02-21 20:59:27,051 - [S] ERROR general en el servidor: [Errno 2] No such file or directory: 'banco_privada.pem'
+2026-02-21 20:59:31,937 - [S] Servidor detenido por KeyboardInterrupt.
+2026-02-21 21:08:26,065 - [S] Conectado desde ('127.0.0.1', 41780)
+2026-02-21 21:08:26,065 - [S] ERROR general en el servidor: [Errno 2] No such file or directory: 'banco_privada.pem'
+2026-02-21 21:11:12,319 - [S] Conectado desde ('127.0.0.1', 50676)
+2026-02-21 21:11:12,319 - [S] ERROR general en el servidor: [Errno 2] No such file or directory: 'banco_privada.pem'
+2026-02-21 21:22:32,570 - [S] Servidor detenido por KeyboardInterrupt.
+2026-02-21 21:22:51,360 - [S] Conectado desde ('127.0.0.1', 35856)
+2026-02-21 21:22:51,363 - [S] ERROR general en el servidor: 'bytes' object cannot be interpreted as an integer
+2026-02-21 21:27:23,245 - [S] Servidor detenido por KeyboardInterrupt.
+2026-02-21 21:27:30,077 - [S] Conectado desde ('127.0.0.1', 60462)
+2026-02-21 21:27:30,081 - [S->C] > ¿Quiere loguearse o registrarse? (L/R)
+2026-02-21 21:27:33,502 - [C->S] r
+2026-02-21 21:27:33,502 - [S->C] > Introduzca a continuación su usuario y contraseña.
+2026-02-21 21:27:36,222 - [C] Usuario: prueba1
+2026-02-21 21:27:39,218 - [C] Password: 1234
+2026-02-21 21:27:39,220 - [C->S] prueba1|1234
+2026-02-21 21:27:39,220 - [S] ERROR general en el servidor: registerUser() missing 1 required positional argument: 'clave_K'
+2026-02-21 21:27:39,220 - [S->C] 
+2026-02-21 21:27:39,220 - [C] Login fallido. Cerrando conexión.
+2026-02-21 21:29:22,148 - [S] Servidor detenido por KeyboardInterrupt.
+2026-02-21 21:29:34,602 - [S] Conectado desde ('127.0.0.1', 42264)
+2026-02-21 21:29:34,612 - [S->C] > ¿Quiere loguearse o registrarse? (L/R)
+2026-02-21 21:29:35,801 - [C->S] l
+2026-02-21 21:29:35,802 - [S->C] > Introduzca a continuación su usuario y contraseña.
+2026-02-21 21:29:37,994 - [S] ERROR general en el servidor: 
+2026-02-21 21:29:40,952 - [S] Conectado desde ('127.0.0.1', 52846)
+2026-02-21 21:29:40,955 - [S->C] > ¿Quiere loguearse o registrarse? (L/R)
+2026-02-21 21:29:42,183 - [C->S] r
+2026-02-21 21:29:42,184 - [S->C] > Introduzca a continuación su usuario y contraseña.
+2026-02-21 21:29:43,925 - [C] Usuario: prueba1
+2026-02-21 21:29:45,709 - [C] Password: 1234
+2026-02-21 21:29:45,711 - [C->S] prueba1|1234
+2026-02-21 21:29:46,032 - [S->C] OK|6
+2026-02-21 21:29:46,333 - [S->C] > Introduzca a continuación la cuenta origen, destino y cantidad de la transacción
+2026-02-21 21:29:59,744 - [C] Cuenta origen: 1
+2026-02-21 21:30:01,768 - [C] Cuenta destino: 1
+2026-02-21 21:30:02,799 - [C] Cantidad: 23
+2026-02-21 21:30:02,800 - [C->S] 1|1|23|17bc30414158ed1d5d97a87b69497e970d7ab0cacdacc7f184c42edae0ed0a55bc85bfadff99e0780c49d0118018397ab6e97134405b9a2882c70d1ab3c184ff|ac42e5552efcf00f99a5ea1e6435192a
+2026-02-21 21:30:02,800 - [S->C] No puede transferir desde otra cuenta.|dda726e4f907e01dfc43a877306d0400de7576ce6ea1679d4b205de45cdcc165d97097ed770afcecf387407be83984e6163b63309fda34a203ccbe33b6bb7cd8|feaf0afd2e8356841801985134bc41f8
+2026-02-21 21:30:02,800 - [C] Respuesta del servidor: No puede transferir desde otra cuenta.
+2026-02-21 21:30:03,001 - [S->C] > ¿Desea realizar otra transacción? (S/N)
+2026-02-21 21:30:07,971 - [C] Saliendo por KeyboardInterrupt.
+2026-02-21 21:30:07,972 - [C->S] 
+2026-02-21 21:30:12,285 - [S] Conectado desde ('127.0.0.1', 59386)
+2026-02-21 21:30:12,287 - [S->C] > ¿Quiere loguearse o registrarse? (L/R)
+2026-02-21 21:30:13,325 - [C->S] r
+2026-02-21 21:30:13,325 - [S->C] > Introduzca a continuación su usuario y contraseña.
+2026-02-21 21:30:16,897 - [C] Usuario: prueba2
+2026-02-21 21:30:19,802 - [C] Password: 123455
+2026-02-21 21:30:19,803 - [C->S] prueba2|123455
+2026-02-21 21:30:20,038 - [S->C] OK|7
+2026-02-21 21:30:20,339 - [S->C] > Introduzca a continuación la cuenta origen, destino y cantidad de la transacción
+2026-02-21 21:30:23,486 - [C] Cuenta origen: 20
+2026-02-21 21:30:25,479 - [C] Cuenta destino: 2
+2026-02-21 21:30:26,050 - [C] Cantidad: 2
+2026-02-21 21:30:26,050 - [C->S] 20|2|2|29fb042a091c204385d95fa2b73f2b5bb061aab1ec6447a77372f26ae1b61894bdb089f87945caeced5a061e6bb16f3a6d8a58d2acb725e12b2eb5da44627652|6b27928c870bee3c85b093c163a86700
+2026-02-21 21:30:26,050 - [S->C] No puede transferir desde otra cuenta.|1b878e6cda19a81a441c43337928824f4f585361a61d9eadaf988e05dac823b227e30355606a5bb1dad0a81d01d48ae73fb7b51e51b84d84d183d9f88cf853ec|c9a632afc4cfa31ba5f3b5e8dd64ec7c
+2026-02-21 21:30:26,051 - [C] Respuesta del servidor: No puede transferir desde otra cuenta.
+2026-02-21 21:30:26,251 - [S->C] > ¿Desea realizar otra transacción? (S/N)
+2026-02-21 21:30:30,531 - [C->S] s
+2026-02-21 21:30:30,732 - [S->C] > Introduzca a continuación la cuenta origen, destino y cantidad de la transacción
+2026-02-21 21:30:32,179 - [C] Cuenta origen: 7
+2026-02-21 21:30:33,052 - [C] Cuenta destino: 6
+2026-02-21 21:30:35,966 - [C] Cantidad: 202
+2026-02-21 21:30:35,967 - [C->S] 7|6|202|62e8744cf75b55755f34180cdac8a1d215c58de7139b964cfe52b56bf9d3ea9f9ed9c8e779a74a63291d9b6962bae0b522c6fa5e302795f4265bf235b284e297|2085d9e7012c0f0f7299ad689f8adbe2
+2026-02-21 21:30:35,985 - [S] --- DATOS RECIBIDOS ---
+2026-02-21 21:30:35,985 - [S] Cuenta origen: 7
+2026-02-21 21:30:35,985 - [S] Cuenta destino: 6
+2026-02-21 21:30:35,985 - [S] Cantidad: 202.0
+2026-02-21 21:30:35,985 - [S] ---------
+2026-02-21 21:30:35,985 - [S->C] TRANSFERENCIA REALIZADA|42072a524d982859e0de9d048d7890e06d936bde9721830bc5a72cd048ecbd06722fa33fdd7628d9ece3806feae1c0f8666b57f4d1626458c5425a02ead0108f|9c9a6557cd01eac16b4486895f11baa3
+2026-02-21 21:30:35,985 - [C] Respuesta del servidor: TRANSFERENCIA REALIZADA
+2026-02-21 21:30:36,186 - [S->C] > ¿Desea realizar otra transacción? (S/N)
+2026-02-21 21:37:34,172 - [C->S] 
+2026-02-21 21:39:54,790 - [S] Conectado desde ('127.0.0.1', 52010)
+2026-02-21 21:39:54,792 - [S->C] > ¿Quiere loguearse o registrarse? (L/R)
+2026-02-21 21:42:25,163 - [C->S] l
+2026-02-21 21:42:25,163 - [S->C] > Introduzca a continuación su usuario y contraseña.
+2026-02-21 21:42:28,417 - [C] Usuario: prueba1
+2026-02-21 21:42:31,339 - [C] Password: 1234
+2026-02-21 21:42:31,340 - [C->S] prueba1|1234
+2026-02-21 21:42:31,397 - [S->C] Login correcto. Su Nª de cuenta es: 6
+2026-02-21 21:42:31,597 - [S->C] > Introduzca a continuación la cuenta origen, destino y cantidad de la transacción
+2026-02-21 21:42:33,422 - [C] Cuenta origen: 6
+2026-02-21 21:42:34,568 - [C] Cuenta destino: 7
+2026-02-21 21:42:37,017 - [C] Cantidad: 39
+2026-02-21 21:42:37,018 - [C->S] 6|7|39|4fad59a3e97e1142c74d50426a8947ee4baceaf14036c33b174531eff0356265a75e08c01641bc0390d9c4280f4dc7e63e632d536feaea4226ab497936e5edfa|6f8ee1485799c641cef1d12ef6fa24f9
+2026-02-21 21:42:37,049 - [S] --- DATOS RECIBIDOS ---
+2026-02-21 21:42:37,049 - [S] Cuenta origen: 6
+2026-02-21 21:42:37,049 - [S] Cuenta destino: 7
+2026-02-21 21:42:37,049 - [S] Cantidad: 39.0
+2026-02-21 21:42:37,049 - [S] ---------
+2026-02-21 21:42:37,049 - [S->C] TRANSFERENCIA REALIZADA|46bc1c12c9311ff702b5fd595cfeae42eccf612b64c0737c47d439d69116ec7409d5a00a4404bda06593f2d7b7f8bbbb4202c92c1efa709f0c033cb172ff5d55|31150cfb24512eb885b38f4363c6389a
+2026-02-21 21:42:37,049 - [C] Respuesta del servidor: TRANSFERENCIA REALIZADA
+2026-02-21 21:42:37,249 - [S->C] > ¿Desea realizar otra transacción? (S/N)
+2026-02-21 21:44:20,956 - [C] Saliendo por KeyboardInterrupt.
+2026-02-21 21:44:20,956 - [C->S] 
+2026-02-21 21:44:25,701 - [S] Servidor detenido por KeyboardInterrupt.
+2026-02-21 22:06:56,510 - [S] Conectado desde ('127.0.0.1', 36134)
+2026-02-21 22:06:56,512 - [S->C] > ¿Quiere loguearse o registrarse? (L/R)
+2026-02-21 22:06:58,242 - [C->S] l
+2026-02-21 22:06:58,242 - [S->C] > Introduzca a continuación su usuario y contraseña.
+2026-02-21 22:07:01,836 - [C] Usuario: prueba1
+2026-02-21 22:07:03,659 - [C] Password: 1234
+2026-02-21 22:07:03,660 - [C->S] prueba1|1234
+2026-02-21 22:07:03,708 - [S->C] Login correcto. Su Nª de cuenta es: 6
+2026-02-21 22:07:03,909 - [S->C] > Introduzca a continuación la cuenta origen, destino y cantidad de la transacción
+2026-02-21 22:07:05,705 - [C] Cuenta origen: 6
+2026-02-21 22:07:07,746 - [C] Cuenta destino: 7
+2026-02-21 22:07:09,103 - [C] Cantidad: 200
+2026-02-21 22:07:09,103 - [C->S] 6|7|200|b2bebbbdad70e436aaf3a75b83407c33c0abd6170ab81ec384eea702167e0347eba97bcbb49006bfa2de635ce72670577810e0cea42ae6264f5c35ce1d5f10b2|a2b4f6866dbd42f0f968cdce721b3d01
+2026-02-21 22:07:09,112 - [S] --- DATOS RECIBIDOS ---
+2026-02-21 22:07:09,112 - [S] Cuenta origen: 6
+2026-02-21 22:07:09,112 - [S] Cuenta destino: 7
+2026-02-21 22:07:09,112 - [S] Cantidad: 200.0
+2026-02-21 22:07:09,112 - [S] ---------
+2026-02-21 22:07:09,112 - [S->C] TRANSFERENCIA REALIZADA|2554cc0d4f9862b036d8d3984d4ca12bb6d63d2867ed2c58726ce048d72fdd6acc08da8cf050e2ecea80cabaeb8c20728932e2bc31b8b2e832579e2883d4527b|8eea32fea5a4021fbfefd3b6fbcfe14d
+2026-02-21 22:07:09,112 - [C] Respuesta del servidor: TRANSFERENCIA REALIZADA
+2026-02-21 22:07:09,312 - [S->C] > ¿Desea realizar otra transacción? (S/N)
+2026-02-21 22:07:10,897 - [C->S] n
+2026-02-21 22:07:14,007 - [S] Conectado desde ('127.0.0.1', 57636)
+2026-02-21 22:07:14,009 - [S->C] > ¿Quiere loguearse o registrarse? (L/R)
+2026-02-21 22:07:15,295 - [C->S] r
+2026-02-21 22:07:15,295 - [S->C] > Introduzca a continuación su usuario y contraseña.
+2026-02-21 22:07:20,359 - [C] Usuario: curro
+2026-02-21 22:07:26,314 - [C] Password: 12345
+2026-02-21 22:07:26,330 - [C->S] curro|12345|-----BEGIN PUBLIC KEY-----
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxKg3pKE3UzYFGvX+nURk
+fbDxCCHNDZzGRibZ1EEFrplCbB/YD4B9xUaomMQYYAqhcedkEzlNWYQKOT7UjfYn
+5uX4M/EZWRrULkAWV3KSS3Ei0MCywNWtGjYxN6k0mMRSYdiDOW93niHqzkTKSU8y
+KtOvT3F6p+ZA9Oxn74sqlZX4QlO+SWSmPdVY05mXTLUGNLzOmPQ+F4iCZgsik+Cq
+kz++nCjxkiAh/pMyVKnGZWegUMkFn3XkcheuBVU3w4bdDrq5Uu8z35dLtTZI3lQo
+mm4GeIzEs2D0Ic+OGgyfIYIgopGEbC6iV45egdD/18hkaKM/xBUOjOuXn2sSEGOF
+yQIDAQAB
+-----END PUBLIC KEY-----
+
+2026-02-21 22:07:26,404 - [S->C] OK|8
+2026-02-21 22:07:26,604 - [S->C] > Introduzca a continuación la cuenta origen, destino y cantidad de la transacción
+2026-02-21 22:07:30,802 - [C] Cuenta origen: 8
+2026-02-21 22:07:32,025 - [C] Cuenta destino: 6
+2026-02-21 22:07:33,701 - [C] Cantidad: 300
+2026-02-21 22:07:33,701 - [C->S] 8|6|300|b69beeaff80c521beac1ff74cf63b994dc4314f0693c8ea66fcda4304355ee6bf277ab8133264338d056f8613ee8042af3987cd23a98ce3383f0fd7661944c9c|e182e314b44a6f4c8164726414761f20
+2026-02-21 22:07:33,710 - [S] --- DATOS RECIBIDOS ---
+2026-02-21 22:07:33,710 - [S] Cuenta origen: 8
+2026-02-21 22:07:33,710 - [S] Cuenta destino: 6
+2026-02-21 22:07:33,710 - [S] Cantidad: 300.0
+2026-02-21 22:07:33,710 - [S] ---------
+2026-02-21 22:07:33,710 - [S->C] TRANSFERENCIA REALIZADA|90169969e0dd7033885eb12a0d2351f558c44a644b9429fd8d8ecaaa2b2ffee59f9c4685ed53a1de5efc675024c22eced1c3e64b8282f97a25719b927f4a974d|60581485dfc0a9da02c831d0179cad68
+2026-02-21 22:07:33,710 - [C] Respuesta del servidor: TRANSFERENCIA REALIZADA
+2026-02-21 22:07:33,910 - [S->C] > ¿Desea realizar otra transacción? (S/N)
+2026-02-21 22:07:35,877 - [C->S] n
