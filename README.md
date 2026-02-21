@@ -142,7 +142,7 @@ pip install psycopg2-binary argon2-cffi
 ```
 
 ## 9. Generar las claves RSA del servidor
-``
+```
 python generar_claves_servidor.py
 ``
 
