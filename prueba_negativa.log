@@ -1,0 +1,65 @@
+2026-02-21 10:50:30,091 - [MITM] MITM escuchando en 4000
+2026-02-21 10:50:33,149 - [MITM] Cliente conectado: ('127.0.0.1', 55552)
+2026-02-21 10:50:33,150 - [S] Conectado desde ('127.0.0.1', 55553)
+2026-02-21 10:50:33,150 - [S->C] > ¿Quiere loguearse o registrarse? (L/R)
+2026-02-21 10:51:27,868 - [C->S] L
+2026-02-21 10:51:27,869 - [S->C] > Introduzca a continuación su usuario y contraseña.
+2026-02-21 10:51:33,379 - [C] Usuario: pruebaDef
+2026-02-21 10:51:34,515 - [C] Password: Def
+2026-02-21 10:51:34,515 - [C->S] pruebaDef|Def
+2026-02-21 10:51:34,667 - [S->C] Login correcto. Su Nª de cuenta es: 12
+2026-02-21 10:51:34,871 - [S->C] > Introduzca a continuación la cuenta origen, destino y cantidad de la transacción
+2026-02-21 10:51:57,847 - [C] Cuenta origen: 12
+2026-02-21 10:52:00,474 - [C] Cuenta destino: 2
+2026-02-21 10:52:03,085 - [C] Cantidad: 1000000
+2026-02-21 10:52:03,085 - [MITM] Mensaje original:
+2026-02-21 10:52:03,085 - [MITM] --- DATOS RECIBIDOS ---
+2026-02-21 10:52:03,085 - [MITM] Cuenta origen: 12
+2026-02-21 10:52:03,085 - [MITM] Cuenta destino: 2
+2026-02-21 10:52:03,085 - [MITM] Cantidad: 1000000
+2026-02-21 10:52:03,085 - [MITM] ---------
+2026-02-21 10:52:03,085 - [MITM] Qué tipo de ataque quieres realizar? (1: MITM, 2: Replay)
+2026-02-21 10:52:20,668 - [MITM] 1
+2026-02-21 10:52:20,668 - [MITM] Realizando ataque MITM: introduzca la cantidad que desea enviar en la transacción
+2026-02-21 10:52:30,096 - [MITM] 100000000
+2026-02-21 10:52:30,096 - [C->S] 12|2|100000000|e70aeb29c8c06ea8f200ebb96ed8effb0b104dbcb6d61d9dbdeba87ed363f01725a3775e21889f574fe91d82be541fe092ba81f823005f315219d94dd240320e|b194b1f0b960ad3db374394a44762b6d
+2026-02-21 10:52:30,096 - [S] ERROR DE SEGURIDAD: ERROR DE SEGURIDAD. La firma no coincide.
+2026-02-21 10:54:08,670 - [MITM] MITM escuchando en 4000
+2026-02-21 10:54:11,456 - [MITM] Cliente conectado: ('127.0.0.1', 52181)
+2026-02-21 10:54:11,457 - [S] Conectado desde ('127.0.0.1', 52182)
+2026-02-21 10:54:11,458 - [S->C] > ¿Quiere loguearse o registrarse? (L/R)
+2026-02-21 10:54:13,472 - [C->S] L
+2026-02-21 10:54:13,473 - [S->C] > Introduzca a continuación su usuario y contraseña.
+2026-02-21 10:54:16,284 - [C] Usuario: pruebaDef
+2026-02-21 10:54:18,278 - [C] Password: Def
+2026-02-21 10:54:18,279 - [C->S] pruebaDef|Def
+2026-02-21 10:54:18,424 - [S->C] Login correcto. Su Nª de cuenta es: 12
+2026-02-21 10:54:18,634 - [S->C] > Introduzca a continuación la cuenta origen, destino y cantidad de la transacción
+2026-02-21 10:54:24,302 - [C] Cuenta origen: 12
+2026-02-21 10:54:25,712 - [C] Cuenta destino: 2
+2026-02-21 10:54:28,775 - [C] Cantidad: 10
+2026-02-21 10:54:28,778 - [MITM] Mensaje original:
+2026-02-21 10:54:28,778 - [MITM] --- DATOS RECIBIDOS ---
+2026-02-21 10:54:28,778 - [MITM] Cuenta origen: 12
+2026-02-21 10:54:28,778 - [MITM] Cuenta destino: 2
+2026-02-21 10:54:28,778 - [MITM] Cantidad: 10
+2026-02-21 10:54:28,778 - [MITM] ---------
+2026-02-21 10:54:28,778 - [MITM] Qué tipo de ataque quieres realizar? (1: MITM, 2: Replay)
+2026-02-21 10:54:36,390 - [MITM] e
+2026-02-21 10:54:36,390 - [MITM] Opción no válida. Por favor, introduzca 1 para MITM o 2 para Replay.
+2026-02-21 10:55:38,149 - [MITM] 
+2026-02-21 10:55:38,149 - [MITM] Opción no válida. Por favor, introduzca 1 para MITM o 2 para Replay.
+2026-02-21 10:55:44,837 - [MITM] 2
+2026-02-21 10:55:44,837 - [MITM] ¿Cuantas veces quieres repetir el mensaje?
+2026-02-21 10:55:46,491 - [MITM] 5
+2026-02-21 10:55:46,491 - [C->S] 12|2|10|8b6f8db62e277be881ff606dbe7ca1cae2658aa2a6ab5fa65252392f7903781ec78b13575bc090a1d2b56a4910287ab9db8e3b03622c52cbf73f73414e489098|1306ea29ba5eea3a49dafde1f5015098
+2026-02-21 10:55:46,533 - [S] --- DATOS RECIBIDOS ---
+2026-02-21 10:55:46,533 - [S] Cuenta origen: 12
+2026-02-21 10:55:46,533 - [S] Cuenta destino: 2
+2026-02-21 10:55:46,533 - [S] Cantidad: 10.0
+2026-02-21 10:55:46,533 - [S] ---------
+2026-02-21 10:55:46,734 - [MITM->S] S
+2026-02-21 10:55:46,734 - [C->S] S
+2026-02-21 10:55:46,935 - [MITM->S] 12|2|10|8b6f8db62e277be881ff606dbe7ca1cae2658aa2a6ab5fa65252392f7903781ec78b13575bc090a1d2b56a4910287ab9db8e3b03622c52cbf73f73414e489098|1306ea29ba5eea3a49dafde1f5015098
+2026-02-21 10:55:46,935 - [C->S] 12|2|10|8b6f8db62e277be881ff606dbe7ca1cae2658aa2a6ab5fa65252392f7903781ec78b13575bc090a1d2b56a4910287ab9db8e3b03622c52cbf73f73414e489098|1306ea29ba5eea3a49dafde1f5015098
+2026-02-21 10:55:46,935 - [S] ERROR DE SEGURIDAD: ERROR DE SEGURIDAD. Nonce reutilizado.

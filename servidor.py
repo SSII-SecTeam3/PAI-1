@@ -2,12 +2,29 @@ import socket
 import time
 import psycopg2
 import seguridad
+import logging
 from populatedb import get_connection
 from argon2 import PasswordHasher
 from argon2.exceptions import VerifyMismatchError
 
 HOST = '127.0.0.1'
 PORT = 5000
+
+logger = logging.getLogger("server_logger")
+logger.setLevel(logging.INFO)
+
+formatter = logging.Formatter('%(asctime)s - %(message)s')
+
+def cambiar_fichero_log(nombre_fichero):
+    global logger
+
+    for handler in logger.handlers[:]:
+        logger.removeHandler(handler)
+        handler.close()
+
+    file_handler = logging.FileHandler(filename=nombre_fichero, encoding='utf-8')
+    file_handler.setFormatter(formatter)
+    logger.addHandler(file_handler)
 
 ph = PasswordHasher()
 logged_users = {}
@@ -38,6 +55,7 @@ def registerUser(socket, user, password):
 
     except Exception as e:
         db.rollback()
+        logger.error(f"[S] ERROR REAL EN REGISTRO: {e}")
         print("ERROR REAL EN REGISTRO:", e)
         socket.send("ERROR interno del servidor.".encode())
 
@@ -75,6 +93,7 @@ def loginUser(socket, user, password):
             return None
 
     except Exception as e:
+        logger.error(f"[S] Error login: {e}")
         print(f"Error login: {e}")
         socket.send("ERROR en login.".encode())
         return None
@@ -144,9 +163,22 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server:
             conn, addr = server.accept()
 
             with conn:
+                identidad_conexion = conn.recv(1024).decode()
+                print(f"Identidad conexión: {identidad_conexion}")
+
+                if identidad_conexion == "Cliente":
+                    cambiar_fichero_log('prueba_positiva.log')
+                elif identidad_conexion == "MITM":
+                    cambiar_fichero_log('prueba_negativa.log')
+
+                for handler in logger.handlers:
+                    print(f"Handler activo: {handler.baseFilename}")
+
+                logger.info(f"[S] Conectado desde {addr}")
                 print(f"Conectado desde {addr}")
                 conn.send("> ¿Quiere loguearse o registrarse? (L/R)".encode())
                 regOLog = conn.recv(1024).decode()
+                logger.info(f"[C->S] {regOLog}")
 
                 if not regOLog: 
                     continue
@@ -154,9 +186,11 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server:
                 while regOLog.upper() not in ["L", "R"]:
                     conn.send("Opción no válida. Por favor, introduzca L para loguearse o R para registrarse.".encode())
                     regOLog = conn.recv(1024).decode()
+                    logger.info(f"[C->S] {regOLog}")
 
                 conn.send("> Introduzca a continuación su usuario y contraseña.".encode())
                 datos_login = conn.recv(1024).decode()
+                logger.info(f"[C->S] {datos_login}")
 
                 if "|" not in datos_login:
                     conn.close()
@@ -191,6 +225,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server:
                         try:
                             conn.send("> Introduzca a continuación la cuenta origen, destino y cantidad de la transacción".encode())
                             data_sec = conn.recv(4096).decode()
+                            logger.info(f"[C->S] {data_sec}")
                             if not data_sec:
                                 break
 
@@ -202,6 +237,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server:
                             respuesta = ""
 
                             if not valido:
+                                logger.error(f"[S] ERROR DE SEGURIDAD: {error}")
                                 print("ERROR DE SEGURIDAD.", error)
                                 break
                             else:
@@ -216,6 +252,11 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server:
                                     else:
                                         resultado = realizar_transferencia(origen, destino, cantidad)
                                         respuesta = resultado
+                                        logger.info(f"[S] --- DATOS RECIBIDOS ---")
+                                        logger.info(f"[S] Cuenta origen: {origen}")
+                                        logger.info(f"[S] Cuenta destino: {destino}")
+                                        logger.info(f"[S] Cantidad: {cantidad}")
+                                        logger.info(f"[S] ---------")
                                         print("\n--- DATOS RECIBIDOS ---")
                                         print("Cuenta origen:", origen)
                                         print("Cuenta destino:", destino)
@@ -227,13 +268,16 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server:
                                 except Exception as e:
                                     respuesta = "ERROR EN PROCESAMIENTO"
 
+                            print(respuesta)
                             respuesta_sec = seguridad.crear_mensaje_seguro(contexto_sec["key"], respuesta)
                             conn.send(respuesta_sec.encode())
                             time.sleep(0.2)
                             conn.send("> ¿Desea realizar otra transacción? (S/N)".encode())
                             newTransaction = conn.recv(1024).decode()
+                            logger.info(f"[C->S] {newTransaction}")
                         
                         except ConnectionResetError:
+                            logger.error(f"[S] Cliente desconectado forzosamente.")
                             print("Cliente desconectado forzosamente.")
                             break
 
@@ -242,7 +286,9 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server:
                     del security[conn]
 
         except KeyboardInterrupt:
+            logger.error(f"[S] Servidor detenido por KeyboardInterrupt.")
             print("\nApagando servidor...")
             break
         except Exception as e:
+            logger.error(f"[S] ERROR general en el servidor: {e}")
             print(f"ERROR general en el servidor: {e}")
