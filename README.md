@@ -139,7 +139,7 @@ Ahora ya podemos cerrar la terminal
 
 Abrir la terminal de Visual e instalar las dependencias. Se puede crear un entorno vitual si se considera necesario.
 ```
-pip install psycopg2-binary argon2-cffi
+pip install -r requirements
 ```
 
 ## 9. Generar las claves RSA del servidor
