@@ -64,9 +64,11 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as client:
         if respuesta.startswith("OK"):
             user_id = respuesta.split("|")[1]
             msgUserRegisteredOrLogged = "registrado correctamente" 
+            logging.info(f"[C] Usuario registrado correctamente. Nº de Cuenta: {user_id}")
             print(f"Usuario registrado correctamente. Su Nº de Cuenta es: {user_id}")
         else:
             msgUserRegisteredOrLogged = respuesta
+            logging.info(f"[C] Registro fallido. Razón: {respuesta}")
             print(msgUserRegisteredOrLogged)
     else:
         datos_cifrados = seguridad.cifrar_credenciales(clave_K, f"{user}|{password}")

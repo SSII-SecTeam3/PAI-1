@@ -123,6 +123,7 @@ Verás una tabla similar a esta:
  id            | integer       |              | not null | nextval('users_id_seq'::regclass)
  username      | text          |              | not null |
  password_hash | text          |              | not null |
+ pub_rsa       | text          |              | not null |
  balance       | numeric(12,2) |              | not null | 0
 ═ndices:
     "users_pkey" PRIMARY KEY, btree (id)

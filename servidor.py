@@ -56,9 +56,16 @@ def registerBaseUsers():
                 print(mensaje)
                 continue
 
+            privada_pem_bytes, publica_pem_bytes = seguridad.generar_claves_registro()
+            nombre_archivo = f"clave_privada_{user}.pem"
+            with open(nombre_archivo, "wb") as f:
+                f.write(privada_pem_bytes)
+            logger.info(f"[S] Clave privada generada y guardada localmente en {nombre_archivo}")    
+            print(f"Clave privada generada y guardada localmente en {nombre_archivo}")
+
             cur.execute(
-                "INSERT INTO users (username, password_hash, balance) VALUES (%s, %s, %s) RETURNING id",
-                (user, password_hash, 1000)
+                "INSERT INTO users (username, password_hash, pub_rsa, balance) VALUES (%s, %s, %s, %s) RETURNING id",
+                (user, password_hash, publica_pem_bytes.decode(), 1000)
             )
             new_id = cur.fetchone()[0]
             db.commit()
@@ -168,6 +175,8 @@ def realizar_transferencia(origen, destino, cantidad):
 
         if balance_origen < cantidad:
             return "Saldo insuficiente."
+        elif cantidad <= 0:
+            return "La cantidad debe ser positiva."
 
         cur.execute(
             "SELECT balance FROM users WHERE id=%s FOR UPDATE",

@@ -11,7 +11,6 @@ logging.basicConfig(filename='prueba_negativa.log', encoding='utf-8', level=logg
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as client:
     client.connect((HOST, PORT))
-
     client.send("Cliente".encode())
 
     with open("servidor_publica.pem", "rb") as f:
@@ -46,15 +45,38 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as client:
     password = input(">> Password: ")
     logging.info(f"[C] Password: {password}")
 
-    datos_cifrados = seguridad.cifrar_credenciales(clave_K, f"{user}|{password}")
-    client.send(datos_cifrados)
-
     clave_sesion = clave_K
     nonces_usados = set()
 
-    msgUserRegisteredOrLogged = client.recv(1024).decode()
-    logging.info(f"[S->C] {msgUserRegisteredOrLogged}")
-    print(msgUserRegisteredOrLogged)
+    if regOLog.upper() == "R":
+        privada_pem_bytes, publica_pem_bytes = seguridad.generar_claves_registro()
+        nombre_archivo = f"clave_privada_{user}.pem"
+        with open(nombre_archivo, "wb") as f:
+            f.write(privada_pem_bytes)
+        print(f"Clave privada generada y guardada localmente en {nombre_archivo}")
+
+        datos_registro = f"{user}|{password}|{publica_pem_bytes.decode()}"
+        client.send(seguridad.cifrar_credenciales(clave_K, datos_registro))
+
+        respuesta = client.recv(1024).decode()
+        logging.info(f"[S->C] {respuesta}")
+        
+        if respuesta.startswith("OK"):
+            user_id = respuesta.split("|")[1]
+            msgUserRegisteredOrLogged = "registrado correctamente" 
+            logging.info(f"[C] Usuario registrado correctamente. Nº de Cuenta: {user_id}")
+            print(f"Usuario registrado correctamente. Su Nº de Cuenta es: {user_id}")
+        else:
+            msgUserRegisteredOrLogged = respuesta
+            logging.info(f"[C] Registro fallido. Razón: {respuesta}")
+            print(msgUserRegisteredOrLogged)
+    else:
+        datos_cifrados = seguridad.cifrar_credenciales(clave_K, f"{user}|{password}")
+        client.send(datos_cifrados)
+        
+        msgUserRegisteredOrLogged = client.recv(1024).decode()
+        logging.info(f"[S->C] {msgUserRegisteredOrLogged}")
+        print(msgUserRegisteredOrLogged)
 
     if "Login correcto" not in msgUserRegisteredOrLogged and "registrado correctamente" not in msgUserRegisteredOrLogged:
         logging.info(f"[C] Login fallido. Cerrando conexión.")
