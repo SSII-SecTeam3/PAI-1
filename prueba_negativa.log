@@ -63,3 +63,109 @@
 2026-02-21 10:55:46,935 - [MITM->S] 12|2|10|8b6f8db62e277be881ff606dbe7ca1cae2658aa2a6ab5fa65252392f7903781ec78b13575bc090a1d2b56a4910287ab9db8e3b03622c52cbf73f73414e489098|1306ea29ba5eea3a49dafde1f5015098
 2026-02-21 10:55:46,935 - [C->S] 12|2|10|8b6f8db62e277be881ff606dbe7ca1cae2658aa2a6ab5fa65252392f7903781ec78b13575bc090a1d2b56a4910287ab9db8e3b03622c52cbf73f73414e489098|1306ea29ba5eea3a49dafde1f5015098
 2026-02-21 10:55:46,935 - [S] ERROR DE SEGURIDAD: ERROR DE SEGURIDAD. Nonce reutilizado.
+2026-02-21 16:36:08,183 - [MITM] MITM escuchando en 4000
+2026-02-21 16:36:15,031 - [MITM] Cliente conectado: ('127.0.0.1', 52107)
+2026-02-21 16:36:15,237 - Usuario base 'user1' ya registrado. Nº de Cuenta: 15
+2026-02-21 16:36:15,344 - Usuario base 'user2' ya registrado. Nº de Cuenta: 16
+2026-02-21 16:36:15,454 - Usuario base 'user3' ya registrado. Nº de Cuenta: 17
+2026-02-21 16:36:15,454 - [S] Conectado desde ('127.0.0.1', 52108)
+2026-02-21 16:36:15,457 - [S->C] > ¿Quiere loguearse o registrarse? (L/R)
+2026-02-21 16:36:23,290 - [C->S] L
+2026-02-21 16:36:23,291 - [S->C] > Introduzca a continuación su usuario y contraseña.
+2026-02-21 16:36:24,568 - [C] Usuario: user2
+2026-02-21 16:36:26,778 - [C] Password: password2
+2026-02-21 16:36:26,780 - [C->S] user2|password2
+2026-02-21 16:36:27,140 - [S->C] Login correcto. Su Nª de cuenta es: 16
+2026-02-21 16:36:27,342 - [S->C] > Introduzca a continuación la cuenta origen, destino y cantidad de la transacción
+2026-02-21 16:36:29,854 - [C] Cuenta origen: 16
+2026-02-21 16:36:30,332 - [C] Cuenta destino: 2
+2026-02-21 16:36:31,493 - [C] Cantidad: 1000
+2026-02-21 16:36:31,493 - [MITM] Mensaje original:
+2026-02-21 16:36:31,493 - [MITM] --- DATOS RECIBIDOS ---
+2026-02-21 16:36:31,493 - [MITM] Cuenta origen: 16
+2026-02-21 16:36:31,493 - [MITM] Cuenta destino: 2
+2026-02-21 16:36:31,493 - [MITM] Cantidad: 1000
+2026-02-21 16:36:31,493 - [MITM] ---------
+2026-02-21 16:36:31,493 - [MITM] Qué tipo de ataque quieres realizar? (1: MITM, 2: Replay)
+2026-02-21 16:36:37,224 - [MITM] a
+2026-02-21 16:36:37,224 - [MITM] Opción no válida. Por favor, introduzca 1 para MITM o 2 para Replay.
+2026-02-21 16:36:38,389 - [MITM] 1
+2026-02-21 16:36:38,389 - [MITM] Realizando ataque MITM: introduzca la cantidad que desea enviar en la transacción
+2026-02-21 16:36:44,910 - [MITM] 100
+2026-02-21 16:36:44,919 - [C->S] 16|2|100|826dc7b1806bd60d1867e11b9fdcf65037a1a8a7a66e7717abcfc33eb5eedd06b9b48c385b5b99768e574ff62f8f525f0142e23a9f82fd30a8616fc46a89a528|f223f19858656530c405f6b248619510
+2026-02-21 16:36:44,919 - [S] ERROR DE SEGURIDAD: ERROR DE SEGURIDAD. La firma no coincide.
+2026-02-22 00:40:16,217 - [MITM] MITM escuchando en 4000
+2026-02-22 00:40:57,083 - [MITM] Cliente conectado: ('127.0.0.1', 53274)
+2026-02-22 00:40:57,300 - Usuario base 'user1' ya registrado. Nº de Cuenta: 15
+2026-02-22 00:40:57,397 - Usuario base 'user2' ya registrado. Nº de Cuenta: 16
+2026-02-22 00:40:57,508 - Usuario base 'user3' ya registrado. Nº de Cuenta: 17
+2026-02-22 00:40:57,511 - [S] Conectado desde ('127.0.0.1', 53275)
+2026-02-22 00:40:57,511 - [S->C] > ¿Quiere loguearse o registrarse? (L/R)
+2026-02-22 00:41:02,676 - [C->S] L
+2026-02-22 00:41:02,677 - [S->C] > Introduzca a continuación su usuario y contraseña.
+2026-02-22 00:41:04,151 - [C] Usuario: user1
+2026-02-22 00:41:06,832 - [C] Password: password1
+2026-02-22 00:41:06,832 - [C->S] user1|password1
+2026-02-22 00:41:07,187 - [S->C] Login correcto. Su Nª de cuenta es: 15
+2026-02-22 00:41:07,399 - [S->C] > Introduzca a continuación la cuenta origen, destino y cantidad de la transacción
+2026-02-22 00:41:10,665 - [C] Cuenta origen: 15
+2026-02-22 00:41:11,039 - [C] Cuenta destino: 2
+2026-02-22 00:41:11,740 - [C] Cantidad: 10
+2026-02-22 00:41:11,743 - [MITM] Mensaje original:
+2026-02-22 00:41:11,743 - [MITM] --- DATOS RECIBIDOS ---
+2026-02-22 00:41:11,743 - [MITM] Cuenta origen: 15
+2026-02-22 00:41:11,743 - [MITM] Cuenta destino: 2
+2026-02-22 00:41:11,743 - [MITM] Cantidad: 10
+2026-02-22 00:41:11,743 - [MITM] ---------
+2026-02-22 00:41:11,743 - [MITM] Qué tipo de ataque quieres realizar? (1: MITM, 2: Replay)
+2026-02-22 00:43:38,757 - [MITM] 
+2026-02-22 00:43:38,758 - [MITM] Opción no válida. Por favor, introduzca 1 para MITM o 2 para Replay.
+2026-02-22 00:43:41,006 - [MITM] 12
+2026-02-22 00:43:41,006 - [MITM] Opción no válida. Por favor, introduzca 1 para MITM o 2 para Replay.
+2026-02-22 00:43:42,410 - [MITM] 2334
+2026-02-22 00:43:42,411 - [MITM] Opción no válida. Por favor, introduzca 1 para MITM o 2 para Replay.
+2026-02-22 00:43:43,272 - [MITM] as
+2026-02-22 00:43:43,272 - [MITM] Opción no válida. Por favor, introduzca 1 para MITM o 2 para Replay.
+2026-02-22 00:44:06,376 - [MITM] 1
+2026-02-22 00:44:06,376 - [MITM] Realizando ataque MITM: introduzca la cantidad que desea enviar en la transacción
+2026-02-22 00:44:40,307 - [MITM] 100
+2026-02-22 00:44:40,310 - [C->S] 15|2|100|a3310a8a7a25bcb79af397d06a011a532a63c184dd6adcbeef476638eca8686b55231dad7385548e99e93988c1d0c7525face9d2c8243e9c68960479982e3edd|5cc9b1262de1886394d4aa377212d43b
+2026-02-22 00:44:40,310 - [S] ERROR DE SEGURIDAD: ERROR DE SEGURIDAD. La firma no coincide.
+2026-02-22 00:45:14,842 - [MITM] MITM escuchando en 4000
+2026-02-22 00:45:20,057 - [MITM] Cliente conectado: ('127.0.0.1', 51263)
+2026-02-22 00:45:20,258 - Usuario base 'user1' ya registrado. Nº de Cuenta: 15
+2026-02-22 00:45:20,359 - Usuario base 'user2' ya registrado. Nº de Cuenta: 16
+2026-02-22 00:45:20,459 - Usuario base 'user3' ya registrado. Nº de Cuenta: 17
+2026-02-22 00:45:20,459 - [S] Conectado desde ('127.0.0.1', 51264)
+2026-02-22 00:45:20,461 - [S->C] > ¿Quiere loguearse o registrarse? (L/R)
+2026-02-22 00:45:21,894 - [C->S] L
+2026-02-22 00:45:21,896 - [S->C] > Introduzca a continuación su usuario y contraseña.
+2026-02-22 00:45:24,983 - [C] Usuario: user3
+2026-02-22 00:45:26,862 - [C] Password: password3
+2026-02-22 00:45:26,863 - [C->S] user3|password3
+2026-02-22 00:45:27,222 - [S->C] Login correcto. Su Nª de cuenta es: 17
+2026-02-22 00:45:27,425 - [S->C] > Introduzca a continuación la cuenta origen, destino y cantidad de la transacción
+2026-02-22 00:45:29,297 - [C] Cuenta origen: 17
+2026-02-22 00:45:29,778 - [C] Cuenta destino: 2
+2026-02-22 00:45:31,658 - [C] Cantidad: 10
+2026-02-22 00:45:31,661 - [MITM] Mensaje original:
+2026-02-22 00:45:31,661 - [MITM] --- DATOS RECIBIDOS ---
+2026-02-22 00:45:31,661 - [MITM] Cuenta origen: 17
+2026-02-22 00:45:31,661 - [MITM] Cuenta destino: 2
+2026-02-22 00:45:31,661 - [MITM] Cantidad: 10
+2026-02-22 00:45:31,661 - [MITM] ---------
+2026-02-22 00:45:31,661 - [MITM] Qué tipo de ataque quieres realizar? (1: MITM, 2: Replay)
+2026-02-22 00:45:34,469 - [MITM] 2
+2026-02-22 00:45:34,469 - [MITM] ¿Cuantas veces quieres repetir el mensaje?
+2026-02-22 00:45:48,954 - [MITM] -2
+2026-02-22 00:45:48,954 - [C->S] 17|2|10|fad96b28bf5ea3c716ea6ead40efbe4f07c2bba482ca1ddea7e6aa76d0d8262df95e9066daab5f4586c665c82a5eaf2e9b92c6b4703be77bb05c0b93e3610611|2ac8299e0dec8f6f93dd9d8c719af0eb
+2026-02-22 00:45:49,105 - [S] --- DATOS RECIBIDOS ---
+2026-02-22 00:45:49,105 - [S] Cuenta origen: 17
+2026-02-22 00:45:49,105 - [S] Cuenta destino: 2
+2026-02-22 00:45:49,105 - [S] Cantidad: 10.0
+2026-02-22 00:45:49,105 - [S] ---------
+2026-02-22 00:45:49,308 - [MITM->S] S
+2026-02-22 00:45:49,309 - [C->S] S
+2026-02-22 00:45:49,512 - [MITM->S] 17|2|10|fad96b28bf5ea3c716ea6ead40efbe4f07c2bba482ca1ddea7e6aa76d0d8262df95e9066daab5f4586c665c82a5eaf2e9b92c6b4703be77bb05c0b93e3610611|2ac8299e0dec8f6f93dd9d8c719af0eb
+2026-02-22 00:45:49,512 - [C->S] 17|2|10|fad96b28bf5ea3c716ea6ead40efbe4f07c2bba482ca1ddea7e6aa76d0d8262df95e9066daab5f4586c665c82a5eaf2e9b92c6b4703be77bb05c0b93e3610611|2ac8299e0dec8f6f93dd9d8c719af0eb
+2026-02-22 00:45:49,512 - [S] ERROR DE SEGURIDAD: ERROR DE SEGURIDAD. Nonce reutilizado.

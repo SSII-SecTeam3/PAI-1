@@ -167,3 +167,115 @@
 2026-02-21 10:37:21,353 - [C->S] pruebaDef|1234
 2026-02-21 10:37:21,510 - [S->C] ERROR: usuario ya existe.
 2026-02-21 10:37:21,510 - [C] Login fallido. Cerrando conexión.
+2026-02-21 16:31:19,594 - [S] Conectado desde ('127.0.0.1', 58867)
+2026-02-21 16:31:19,594 - [S->C] > ¿Quiere loguearse o registrarse? (L/R)
+2026-02-21 16:34:01,692 - Usuario base 'user1' ya registrado. Nº de Cuenta: 15
+2026-02-21 16:34:01,790 - Usuario base 'user2' ya registrado. Nº de Cuenta: 16
+2026-02-21 16:34:01,893 - Usuario base 'user3' ya registrado. Nº de Cuenta: 17
+2026-02-21 16:34:01,893 - [S] Conectado desde ('127.0.0.1', 57949)
+2026-02-21 16:34:01,893 - [S->C] > ¿Quiere loguearse o registrarse? (L/R)
+2026-02-21 16:34:22,108 - [C->S] R
+2026-02-21 16:34:22,108 - [S->C] > Introduzca a continuación su usuario y contraseña.
+2026-02-21 16:34:27,547 - [C] Usuario: user1
+2026-02-21 16:34:31,530 - [C] Password: password123
+2026-02-21 16:34:31,533 - [C->S] user1|password123
+2026-02-21 16:34:31,954 - [S->C] ERROR: usuario ya existe.
+2026-02-21 16:34:31,954 - [C] Login fallido. Cerrando conexión.
+2026-02-21 16:34:48,211 - Usuario base 'user1' ya registrado. Nº de Cuenta: 15
+2026-02-21 16:34:48,299 - Usuario base 'user2' ya registrado. Nº de Cuenta: 16
+2026-02-21 16:34:48,394 - Usuario base 'user3' ya registrado. Nº de Cuenta: 17
+2026-02-21 16:34:48,395 - [S] Conectado desde ('127.0.0.1', 64646)
+2026-02-21 16:34:48,395 - [S->C] > ¿Quiere loguearse o registrarse? (L/R)
+2026-02-21 16:34:53,077 - [C->S] L
+2026-02-21 16:34:53,077 - [S->C] > Introduzca a continuación su usuario y contraseña.
+2026-02-21 16:34:54,903 - [C] Usuario: user1
+2026-02-21 16:34:56,731 - [C] Password: password1
+2026-02-21 16:34:56,731 - [C->S] user1|password1
+2026-02-21 16:34:57,096 - [S->C] Login correcto. Su Nª de cuenta es: 15
+2026-02-21 16:34:57,301 - [S->C] > Introduzca a continuación la cuenta origen, destino y cantidad de la transacción
+2026-02-21 16:35:01,563 - [C] Cuenta origen: 15
+2026-02-21 16:35:04,888 - [C] Cuenta destino: 2
+2026-02-21 16:35:06,871 - [C] Cantidad: 1000
+2026-02-21 16:35:06,911 - [C->S] 15|2|1000|405566018410de8b6e80d0365f62ff67ea55d7dd4f06ffc10d701fefd7835805e8acc11f95a3980bb9dc01f3e3ce90d185ab264fff47d1fdabd3303379150718|4e935c29efb0f4263cf7585389512f08
+2026-02-21 16:35:07,015 - [S] --- DATOS RECIBIDOS ---
+2026-02-21 16:35:07,015 - [S] Cuenta origen: 15
+2026-02-21 16:35:07,015 - [S] Cuenta destino: 2
+2026-02-21 16:35:07,017 - [S] Cantidad: 1000.0
+2026-02-21 16:35:07,017 - [S] ---------
+2026-02-21 16:35:07,019 - [S->C] TRANSFERENCIA REALIZADA|caa74ae28720d1c9708875d1951d4b4f65010408c139115661c8d415b073ed99f42746682d3ae450924d1fa65a9458775c852ab3fb28313f3f7cf700ca10d94a|864618a36cd42622a7ba344039699937
+2026-02-21 16:35:07,019 - [C] Respuesta del servidor: TRANSFERENCIA REALIZADA
+2026-02-21 16:35:07,220 - [S->C] > ¿Desea realizar otra transacción? (S/N)
+2026-02-21 16:35:11,342 - [C->S] N
+2026-02-22 00:04:54,784 - Usuario base 'user1' ya registrado. Nº de Cuenta: 15
+2026-02-22 00:04:54,897 - Usuario base 'user2' ya registrado. Nº de Cuenta: 16
+2026-02-22 00:04:54,994 - Usuario base 'user3' ya registrado. Nº de Cuenta: 17
+2026-02-22 00:04:54,995 - [S] Conectado desde ('127.0.0.1', 61305)
+2026-02-22 00:04:54,995 - [S->C] > ¿Quiere loguearse o registrarse? (L/R)
+2026-02-22 00:04:59,508 - [C->S] 
+2026-02-22 00:04:59,508 - [S->C] Opción no válida. Por favor, introduzca L para loguearse o R para registrarse.
+2026-02-22 00:05:02,486 - [C->S] 
+2026-02-22 00:05:02,490 - [S] ERROR general en el servidor: [WinError 10053] Se ha anulado una conexión establecida por el software en su equipo host
+2026-02-22 00:05:18,639 - Usuario base 'user1' ya registrado. Nº de Cuenta: 15
+2026-02-22 00:05:18,726 - Usuario base 'user2' ya registrado. Nº de Cuenta: 16
+2026-02-22 00:05:18,812 - Usuario base 'user3' ya registrado. Nº de Cuenta: 17
+2026-02-22 00:05:18,812 - [S] Conectado desde ('127.0.0.1', 61312)
+2026-02-22 00:05:18,812 - [S->C] > ¿Quiere loguearse o registrarse? (L/R)
+2026-02-22 00:05:28,763 - [S] Servidor detenido por KeyboardInterrupt.
+2026-02-22 00:32:45,488 - Usuario base 'user1' ya registrado. Nº de Cuenta: 15
+2026-02-22 00:32:45,595 - Usuario base 'user2' ya registrado. Nº de Cuenta: 16
+2026-02-22 00:32:45,689 - Usuario base 'user3' ya registrado. Nº de Cuenta: 17
+2026-02-22 00:32:45,689 - [S] Conectado desde ('127.0.0.1', 58621)
+2026-02-22 00:32:45,689 - [S->C] > ¿Quiere loguearse o registrarse? (L/R)
+2026-02-22 00:33:26,430 - [C->S] a
+2026-02-22 00:33:26,430 - [S->C] Opción no válida. Por favor, introduzca L para loguearse o R para registrarse.
+2026-02-22 00:33:35,052 - [S] ERROR general en el servidor: [WinError 10054] Se ha forzado la interrupción de una conexión existente por el host remoto
+2026-02-22 00:33:44,794 - Usuario base 'user1' ya registrado. Nº de Cuenta: 15
+2026-02-22 00:33:44,884 - Usuario base 'user2' ya registrado. Nº de Cuenta: 16
+2026-02-22 00:33:44,977 - Usuario base 'user3' ya registrado. Nº de Cuenta: 17
+2026-02-22 00:33:44,977 - [S] Conectado desde ('127.0.0.1', 52567)
+2026-02-22 00:33:44,980 - [S->C] > ¿Quiere loguearse o registrarse? (L/R)
+2026-02-22 00:34:26,023 - [C->S] R
+2026-02-22 00:34:26,023 - [S->C] > Introduzca a continuación su usuario y contraseña.
+2026-02-22 00:35:16,742 - [C] Usuario: PruebaReal
+2026-02-22 00:35:17,881 - [C] Password: Real
+2026-02-22 00:35:17,881 - [C->S] PruebaReal|Real
+2026-02-22 00:35:18,370 - [S->C] Usuario registrado correctamente. Su Nª de Cuenta es: 19
+2026-02-22 00:35:18,578 - [S->C] > Introduzca a continuación la cuenta origen, destino y cantidad de la transacción
+2026-02-22 00:36:59,734 - [C] Cuenta origen: 19
+2026-02-22 00:37:00,319 - [C] Cuenta destino: 2
+2026-02-22 00:37:01,512 - [C] Cantidad: 10
+2026-02-22 00:37:01,554 - [C->S] 19|2|10|b9346ff680f84dbaf9f3a2c927df71bc28cdfe2d23171a04d80332e75fc9ced0897a348182c5f589471ddf9858147df78544dd53a7ac57740250a8468e9e490f|0f392cd8da21aeabf7bb279c23b18cff
+2026-02-22 00:37:01,661 - [S] --- DATOS RECIBIDOS ---
+2026-02-22 00:37:01,661 - [S] Cuenta origen: 19
+2026-02-22 00:37:01,661 - [S] Cuenta destino: 2
+2026-02-22 00:37:01,677 - [S] Cantidad: 10.0
+2026-02-22 00:37:01,677 - [S] ---------
+2026-02-22 00:37:01,678 - [S->C] TRANSFERENCIA REALIZADA|6037174d7c2db07ef196eb6ff3f0f28cfbf588d6d9fe8ce86414868301e54a8274faf45f7a90cdf1d683ecdfa54521f61705553cde244dfa5d552cfdb3d3593b|918500ccab6cdeb5505ebda2e9e66597
+2026-02-22 00:37:01,678 - [C] Respuesta del servidor: TRANSFERENCIA REALIZADA
+2026-02-22 00:37:01,879 - [S->C] > ¿Desea realizar otra transacción? (S/N)
+2026-02-22 00:37:59,533 - [C->S] a
+2026-02-22 00:40:21,059 - Usuario base 'user1' ya registrado. Nº de Cuenta: 15
+2026-02-22 00:40:21,154 - Usuario base 'user2' ya registrado. Nº de Cuenta: 16
+2026-02-22 00:40:21,251 - Usuario base 'user3' ya registrado. Nº de Cuenta: 17
+2026-02-22 00:40:21,251 - [S] Conectado desde ('127.0.0.1', 54784)
+2026-02-22 00:40:21,251 - [S->C] > ¿Quiere loguearse o registrarse? (L/R)
+2026-02-22 00:40:24,814 - [C->S] L
+2026-02-22 00:40:24,814 - [S->C] > Introduzca a continuación su usuario y contraseña.
+2026-02-22 00:40:28,176 - [C] Usuario: user1
+2026-02-22 00:40:30,100 - [C] Password: password1
+2026-02-22 00:40:30,100 - [C->S] user1|password1
+2026-02-22 00:40:30,465 - [S->C] Login correcto. Su Nª de cuenta es: 15
+2026-02-22 00:40:30,666 - [S->C] > Introduzca a continuación la cuenta origen, destino y cantidad de la transacción
+2026-02-22 00:40:37,328 - [C] Cuenta origen: 15
+2026-02-22 00:40:37,849 - [C] Cuenta destino: 2
+2026-02-22 00:40:38,759 - [C] Cantidad: 10
+2026-02-22 00:40:38,759 - [C->S] 15|2|10|26c7e37d7b4c22378f9f230bb6116ade85d341d40434a5dd8a1bbe2330c3b737caa0b2bfad721b625a6c03a42098099896cc5d84b971ab9de4c97e5a081223b7|86832f843d5f08d21072f55cfe0a54df
+2026-02-22 00:40:38,892 - [S] --- DATOS RECIBIDOS ---
+2026-02-22 00:40:38,892 - [S] Cuenta origen: 15
+2026-02-22 00:40:38,892 - [S] Cuenta destino: 2
+2026-02-22 00:40:38,892 - [S] Cantidad: 10.0
+2026-02-22 00:40:38,892 - [S] ---------
+2026-02-22 00:40:38,897 - [S->C] Saldo insuficiente.|c162122b2769d10b1b030fb50ad975025f87dd6686275603ba40f3a8353e5e71a7eeb112e6cd29be3549af46fc83a565436578290f830ca3ae35d783fc463687|46856c91de05ebefd31fade2f8c84419
+2026-02-22 00:40:38,897 - [C] Respuesta del servidor: Saldo insuficiente.
+2026-02-22 00:40:39,098 - [S->C] > ¿Desea realizar otra transacción? (S/N)
+2026-02-22 00:40:44,668 - [S] Cliente desconectado forzosamente.

@@ -30,6 +30,51 @@ ph = PasswordHasher()
 logged_users = {}
 security = {}
 
+def registerBaseUsers():
+    db = None
+    cur = None
+    try:
+        db = get_connection()
+        cur = db.cursor()
+
+        for numUsers in range(1,4):
+            user = f"user{numUsers}"    
+            password = f"password{numUsers}"
+            password_hash = ph.hash(password)
+
+            cur.execute(
+            "SELECT id, password_hash FROM users WHERE username=%s",
+            (user,)
+            )
+            result = cur.fetchone()
+
+            if result is not None:
+                result_id = result[0]
+                mensaje = f"Usuario base '{user}' ya registrado. Nº de Cuenta: {result_id}"
+                logger.info(mensaje)
+                print(mensaje)
+                continue
+
+            cur.execute(
+                "INSERT INTO users (username, password_hash, balance) VALUES (%s, %s, %s) RETURNING id",
+                (user, password_hash, 1000)
+            )
+            new_id = cur.fetchone()[0]
+            db.commit()
+
+            mensaje = f"Usuario base registrado correctamente. Su Nº de Cuenta es: {new_id}"
+            logger.info(mensaje)
+            print(mensaje)
+
+    except Exception as e:
+        db.rollback()
+        logger.error(f"[S] ERROR REAL EN REGISTRO DE USUARIOS BASE: {e}")
+        print("ERROR REAL EN REGISTRO DE USUARIOS BASE:", e)
+
+    finally:
+        if cur: cur.close()
+        if db: db.close()
+
 def registerUser(socket, user, password):
     db = None
     cur = None
@@ -170,6 +215,8 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server:
                     cambiar_fichero_log('prueba_positiva.log')
                 elif identidad_conexion == "MITM":
                     cambiar_fichero_log('prueba_negativa.log')
+
+                registerBaseUsers()
 
                 for handler in logger.handlers:
                     print(f"Handler activo: {handler.baseFilename}")
