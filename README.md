@@ -98,6 +98,7 @@ CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     username TEXT UNIQUE NOT NULL,
     password_hash TEXT NOT NULL,
+    pub_rsa TEXT NOT NULL,
     balance NUMERIC(12,2) NOT NULL DEFAULT 0
 );
 ```
@@ -140,15 +141,20 @@ Abrir la terminal de Visual e instalar las dependencias. Se puede crear un entor
 pip install psycopg2-binary argon2-cffi
 ```
 
-## 9. Arrancar la aplicación
+## 9. Generar las claves RSA del servidor
+```
+python generar_claves_servidor.py
+```
 
-### 9.1 Arrancar el servidor
+## 10. Arrancar la aplicación
+
+### 10.1 Arrancar el servidor
 En una terminal ejecutar lo siguiente:
 ```
 python servidor.py
 ```
 
-### 9.2 Arrancar el cliente
+### 10.2 Arrancar el cliente
 En otra terminal diferente ejecutar:
 ```
 python cliente.py

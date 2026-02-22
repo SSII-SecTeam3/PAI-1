@@ -108,6 +108,8 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as mitm:
         logging.info(f"[MITM] Cliente conectado: {addr}")
         print("Cliente conectado:", addr)
 
+        identidad_cliente = client_sock.recv(1024)
+
         server_sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         server_sock.connect((REAL_HOST, REAL_PORT))
 

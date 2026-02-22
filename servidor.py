@@ -6,6 +6,7 @@ import logging
 from populatedb import get_connection
 from argon2 import PasswordHasher
 from argon2.exceptions import VerifyMismatchError
+from cryptography.hazmat.primitives import serialization
 
 HOST = '127.0.0.1'
 PORT = 5000
@@ -75,7 +76,7 @@ def registerBaseUsers():
         if cur: cur.close()
         if db: db.close()
 
-def registerUser(socket, user, password):
+def registerUser(socket, user, password, publica_pem_str):
     db = None
     cur = None
     try:
@@ -84,14 +85,14 @@ def registerUser(socket, user, password):
         password_hash = ph.hash(password)
 
         cur.execute(
-            "INSERT INTO users (username, password_hash, balance) VALUES (%s, %s, %s) RETURNING id",
-            (user, password_hash, 1000)
+            "INSERT INTO users (username, password_hash, pub_rsa, balance) VALUES (%s, %s, %s, %s) RETURNING id",
+            (user, password_hash, publica_pem_str, 1000)
         )
         new_id = cur.fetchone()[0]
         db.commit()
 
-        mensaje = f"Usuario registrado correctamente. Su Nª de Cuenta es: {new_id}"
-        socket.send(mensaje.encode())
+        socket.send(f"OK|{new_id}".encode())
+        
         return new_id
 
     except psycopg2.errors.UniqueViolation:
@@ -195,6 +196,8 @@ def realizar_transferencia(origen, destino, cantidad):
         if cur: cur.close()
         if db: db.close()
 
+with open("servidor_privada.pem", "rb") as f:
+    priv_rsa_srv = serialization.load_pem_private_key(f.read(), password=None)
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server:
     server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
@@ -223,6 +226,9 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server:
 
                 logger.info(f"[S] Conectado desde {addr}")
                 print(f"Conectado desde {addr}")
+
+                clave_K = seguridad.establecer_sesion_servidor(conn, priv_rsa_srv, None)
+
                 conn.send("> ¿Quiere loguearse o registrarse? (L/R)".encode())
                 regOLog = conn.recv(1024).decode()
                 logger.info(f"[C->S] {regOLog}")
@@ -236,23 +242,30 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server:
                     logger.info(f"[C->S] {regOLog}")
 
                 conn.send("> Introduzca a continuación su usuario y contraseña.".encode())
-                datos_login = conn.recv(1024).decode()
+                datos_login_cifrados = conn.recv(4096)
+                datos_login = seguridad.descifrar_credenciales(clave_K, datos_login_cifrados)
                 logger.info(f"[C->S] {datos_login}")
 
                 if "|" not in datos_login:
                     conn.close()
                     continue
                     
-                user, password = datos_login.split("|")
-
-                clave_temporal = seguridad.derivar_clave(password)
-
+                clave_temporal = clave_K
                 user_id = None
 
-                if(regOLog.upper() == "L"):
-                    user_id = loginUser(conn, user, password)
-                elif(regOLog.upper() == "R"):
-                    user_id = registerUser(conn, user, password)
+                if regOLog.upper() == "R":
+                    partes = datos_login.split("|", 2)
+                    if len(partes) == 3:
+                        user, password, pub_rsa_pem = partes
+                        user_id = registerUser(conn, user, password, pub_rsa_pem)
+                    else:
+                        conn.send("ERROR de formato en registro.".encode())
+                        
+                elif regOLog.upper() == "L":
+                    partes = datos_login.split("|", 1)
+                    if len(partes) == 2:
+                        user, password = partes
+                        user_id = loginUser(conn, user, password)
                 
                 if not user_id:
                     conn.close()

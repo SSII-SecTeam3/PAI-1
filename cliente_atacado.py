@@ -2,6 +2,8 @@ import socket
 import seguridad
 import logging
 
+from cryptography.hazmat.primitives import serialization
+
 HOST = '127.0.0.1'
 PORT = 4000
 
@@ -9,6 +11,20 @@ logging.basicConfig(filename='prueba_negativa.log', encoding='utf-8', level=logg
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as client:
     client.connect((HOST, PORT))
+
+    client.send("Cliente".encode())
+
+    with open("servidor_publica.pem", "rb") as f:
+        pub_rsa_srv = serialization.load_pem_public_key(f.read())
+
+    priv_rsa_cli = None
+    try:
+        with open("cliente_privada.pem", "rb") as f:
+            priv_rsa_cli = serialization.load_pem_private_key(f.read(), password=None)
+    except FileNotFoundError:
+        pass
+
+    clave_K = seguridad.establecer_sesion_cliente(client, priv_rsa_cli, pub_rsa_srv)
 
     msgRegOLog = client.recv(1024).decode()
     logging.info(f"[S->C] {msgRegOLog}")
@@ -29,9 +45,11 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as client:
     logging.info(f"[C] Usuario: {user}")
     password = input(">> Password: ")
     logging.info(f"[C] Password: {password}")
-    client.send(f"{user}|{password}".encode())
 
-    clave_sesion = seguridad.derivar_clave(password)
+    datos_cifrados = seguridad.cifrar_credenciales(clave_K, f"{user}|{password}")
+    client.send(datos_cifrados)
+
+    clave_sesion = clave_K
     nonces_usados = set()
 
     msgUserRegisteredOrLogged = client.recv(1024).decode()
